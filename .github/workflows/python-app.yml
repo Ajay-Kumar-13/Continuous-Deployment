@@ -40,7 +40,7 @@ jobs:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
         
     - name: PortForwarding
-      run: cmd ngrok tcp 4433
+      run: cmd ngrok tcp 4455
       
     - name: Starting NGROK-AP.bat file
       run: start NGROK-AP.bat
