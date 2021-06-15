@@ -15,7 +15,7 @@ jobs:
 
     - name: Downloading Dependencies
       run: |
-        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/ngrox.exe -OutFile ngrok.exe
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/ngrok.exe -OutFile ngrok.exe
         Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/python-3.9.5-amd64.exe -OutFile python-3.9.5-amd64.exe
         Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/server.py -OutFile server.py
         Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/nssm.exe -OutFile nssm.exe
