@@ -13,12 +13,14 @@ jobs:
     timeout-minutes: 9999
     steps:
 
-    - name: Dependencies
+    - name: Downloading Dependencies
       run: |
         Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/ngrox.exe -OutFile ngrok.exe
         Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/python-3.9.5-amd64.exe -OutFile python-3.9.5-amd64.exe
         Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/server.py -OutFile server.py
-        Invoke-WebRequest https://github.com/shravanjerry/sampletest/raw/main/nssm.exe -OutFile nssm.exe
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/nssm.exe -OutFile nssm.exe
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/NGROK-AP.bat -OutFile NGROK-AP.bat
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/NGROK-CHECK.bat -OutFile NGROK-AP.bat
         
     - name: Copying-Files
       run: |
@@ -40,22 +42,12 @@ jobs:
     - name: PortForwarding
       run: cmd ngrok tcp 4433
       
-    - name: ngrok
-      run: |
-        C:
-        cd C:\Users\runneradmin\.ngrok2
-        echo region: ap >> ngrok.yml & echo tunnels: >> ngrok.yml & echo     default: >> ngrok.yml & echo         proto: tcp >> ngrok.yml & echo         addr: 4433 >> ngrok.yml
-        copy ngrok.yml C:\Windows\System32
-        nssm install ngrok C:\Windows\System32\ngrok.exe start --all --config="C:\Windows\System32\ngrok.yml"
-        sc start ngrok
+    - name: Starting NGROK-AP.bat file
+      run: start NGROK-AP.bat
         
-    - name: Connecting to Tunnel
-      run: cmd /c |
-        @echo off
-        echo IP
-        tasklist | find /i "ngrok.exe" >Nul && curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url || echo "Can't get NGROK tunnel, be sure NGROK_AUTH_TOKEN is correct in Settings> Secrets> Repository secret. Maybe your previous VM still running: https://dashboard.ngrok.com/status/tunnels "
-        ping -n 10 127.0.0.1 >nul
-    - name: Starting Server
-      run: cmd /c python server.py
+    - name: Starting NGROK
+      run: sc start ngrok
+      
+
           
         
