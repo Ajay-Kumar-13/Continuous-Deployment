@@ -2,7 +2,7 @@ import socket
 import threading
 import time
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.bind(('localhost', 1235))
+sock.bind(('0.0.0.0', 4433))
 sock.listen()
 ALL_CONNECTIONS = []
 ALL_ADRESS = []
