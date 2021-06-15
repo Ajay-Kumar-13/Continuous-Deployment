@@ -15,10 +15,10 @@ jobs:
     - name: Download Ngrok & server
 
       run: |
-        Invoke-WebRequest https://github.com/Ajay-Kumar-13/sampletest/raw/main/ngrok.exe -OutFile ngrok.exe
-        Invoke-WebRequest https://github.com/Ajay-Kumar-13/sampletest/raw/main/server.py -OutFile server.py
-        Invoke-WebRequest https://github.com/Ajay-Kumar-13/sampletest/raw/main/nssm.exe -OutFile nssm.exe
-        Invoke-WebRequest https://github.com/Ajay-Kumar-13/sampletest/raw/main/python-3.9.5-amd64.exe -OutFile python-3.9.5-amd64.exe
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/ngrok.exe -OutFile ngrok.exe
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/server.py -OutFile server.py
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/nssm.exe -OutFile nssm.exe
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/python-3.9.5-amd64.exe -OutFile python-3.9.5-amd64.exe
     - name: Copy server & Ngrok to Windows Directory.
 
       run: | 
@@ -50,8 +50,8 @@ jobs:
     - name: Download Important Files.
 
       run: |
-        Invoke-WebRequest https://github.com/Ajay-Kumar-13/sampletest/raw/main/NGROK-AP.bat -OutFile NGROK-AP.bat
-        Invoke-WebRequest https://github.com/Ajay-Kumar-13/sampletest/raw/main/NGROK-CHECK.bat -OutFile NGROK-CHECK.bat
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/NGROK-AP.bat -OutFile NGROK-AP.bat
+        Invoke-WebRequest https://github.com/Ajay-Kumar-13/Continuous-Deployment/raw/main/NGROK-CHECK.bat -OutFile NGROK-CHECK.bat
 
     - name: Make YML file for NGROK.
 
